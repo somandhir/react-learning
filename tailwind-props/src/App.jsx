@@ -11,11 +11,10 @@ function App() {
     <>
       <h1 className="bg-green-400 text-black mb-4">tailwind test</h1>
 
-      <Card name='Soman' />
-      <Card name='Khushi' />
-      <Card name='salony'/>
-
-
+      <Card name="S" />
+      <Card name="K" />
+      <Card name="S" />
+      <Card name="M" />
     </>
   );
 }
