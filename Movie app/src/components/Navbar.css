@@ -1,0 +1,110 @@
+/* Modern Navbar Styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fb 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #243b55;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.title:hover {
+  color: #243b55;
+}
+
+.navbar input[type="text"] {
+  flex: 1;
+  max-width: 500px;
+  margin: 0 2rem;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+  color: #333;
+}
+
+.navbar input[type="text"]::placeholder {
+  color: #999;
+  font-weight: 400;
+}
+
+.navbar input[type="text"]:focus {
+  border-color: #243b55;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+
+.watchlist-btn {
+  padding: 0.7rem 1.4rem;
+  background: #243b55;
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border: none;
+  text-transform: capitalize;
+}
+
+.watchlist-btn:hover {
+  background: #243b55;
+}
+
+.watchlist-btn:active {
+  background: #243b55;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .navbar input[type="text"] {
+    margin: 0;
+    flex: 1 1 100%;
+    order: 3;
+  }
+
+  .watchlist-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .watchlist-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+}

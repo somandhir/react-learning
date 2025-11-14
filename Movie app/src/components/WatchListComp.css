@@ -1,0 +1,35 @@
+.watchlist-container {
+  padding: 2rem;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f8fbff, #eaf2ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Heading */
+.watchlist-container h2 {
+  color: #1e3a8a; /* deep blue */
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* Grid of movie cards */
+.watchlist-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1300px;
+}
+
+/* Empty state text */
+.empty-text {
+  color: #555;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  font-style: italic;
+}

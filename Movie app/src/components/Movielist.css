@@ -1,0 +1,31 @@
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem;
+  justify-items: center;
+  background-color: #243b55;
+
+  min-height: 100vh;
+}
+
+/* Optional: nice scrollbar for long lists */
+.movie-list::-webkit-scrollbar {
+  width: 8px;
+}
+.movie-list::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+.movie-list::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .movie-list {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
