@@ -1,0 +1,38 @@
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  background: black; 
+}
+
+.cards {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(70px, 1fr));
+  gap: 15px;
+  width: auto;
+  margin-bottom: 30px;
+}
+
+.card {
+  width: 100%;
+  aspect-ratio: 1;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  color: black;
+}
+
+.card:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
