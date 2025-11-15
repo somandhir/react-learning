@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  gap: 1rem;
+}
+.toast-container {
+  width: 20rem;
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+.toast {
+  background-color: brown;
+  border-radius: 0.5rem;
+  position: relative;
+  font-size: 1.2rem;
+  color: white;
+  padding: 1rem;
+  margin: 0.5rem;
+  animation: slide-in 0.4s ease ;
+}
+.toast span {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.success {
+  background-color: rgb(25, 181, 25);
+}
+.info {
+  background-color: rgb(50, 185, 230);
+}
+.warning {
+  background-color: rgb(255, 234, 0);
+}
+.error {
+  background-color: rgb(219, 26, 26);
+}
