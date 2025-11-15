@@ -1,0 +1,17 @@
+.container{
+  height: 25rem;
+  width: 25rem;
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: repeat(15,1fr);
+}
+/* .cell{
+  border: 0.5px solid black;
+} */
+.snake{
+  background-color: green;
+}
+.food{
+  background-color: red;
+  border-radius: 50%;
+}
