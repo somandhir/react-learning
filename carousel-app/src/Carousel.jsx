@@ -21,13 +21,13 @@ function Carousel() {
     };
   }, [run, data]);
   let handleClick = (str) => {
-    console.log(str);
+    // console.log(str);
 
     if (str === "l") {
       if (val == 0) return;
       setval((prev) => prev - 1);
     } else {
-      console.log(val, data.length);
+    //   console.log(val, data.length);
 
       if (val == data.length - 1) setval(0);
       else setval((prev) => prev + 1);
