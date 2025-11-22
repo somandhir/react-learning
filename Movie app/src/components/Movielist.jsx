@@ -3,9 +3,8 @@ import "./Movielist.css";
 import Moviecard from "./Moviecard";
 import Largeview from "./Largeview";
 
-function Movielist({ watchList, setWatchList, movieMap }) {
+function Movielist({ watchList, setWatchList, movieMap,selectedMovie,setSelectedMovie }) {
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     async function fetchMovies() {

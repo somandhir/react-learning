@@ -1,20 +1,47 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import WatchListComp from "./WatchListComp"; 
+import WatchListComp from "./WatchListComp";
 
-function Navbar({  setShowList }) {
+function Navbar({ setShowList, query, setQuery, setshowQueryResult }) {
+  let handleEnter = () => {
+    if (!query) {
+      setshowQueryResult(false);
+    } else {
+      setshowQueryResult(true);
+    }
+  };
 
   return (
     <div className="navbar">
-      <div className="title">FilmFlare</div>
-      <input type="text" placeholder="Search..." />
+      <div
+        onClick={() => {
+          setShowList(false);
+          setshowQueryResult(false);
+        }}
+        className="title"
+      >
+        FilmFlare
+      </div>
+      <input
+        type="text"
+        value={query}
+        placeholder="Search..."
+        onChange={(e) => {
+          setQuery(e.target.value);
+          setshowQueryResult(false);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleEnter();
+          }
+        }}
+      />
       <div
         onClick={() => setShowList((prev) => !prev)}
         className="watchlist-btn"
       >
         Watchlist ❤️
       </div>
-
     </div>
   );
 }
