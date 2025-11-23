@@ -11,7 +11,7 @@ function WatchListComp({
 }) {
   const likedMovies = [];
   watchList.forEach((item) => {
-    if (movieMap.current[item]) likedMovies.push(movieMap.current[item]);
+    if (movieMap[item]) likedMovies.push(movieMap[item]);
   });
 
   return (

@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import WatchListComp from "./WatchListComp";
 
-function Navbar({ setShowList, query, setQuery, setshowQueryResult }) {
+function Navbar({
+  setShowList,
+  query,
+  setQuery,
+  setshowQueryResult,
+  showList,
+}) {
   let handleEnter = () => {
     if (!query) {
       setshowQueryResult(false);
@@ -26,6 +32,7 @@ function Navbar({ setShowList, query, setQuery, setshowQueryResult }) {
         type="text"
         value={query}
         placeholder="Search..."
+        disabled={showList}
         onChange={(e) => {
           setQuery(e.target.value);
           setshowQueryResult(false);

@@ -3,26 +3,56 @@ import "./Movielist.css";
 import Moviecard from "./Moviecard";
 import Largeview from "./Largeview";
 
-function Movielist({ watchList, setWatchList, movieMap,selectedMovie,setSelectedMovie }) {
-  const [movies, setMovies] = useState([]);
+function Movielist({
+  watchList,
+  setWatchList,
+  selectedMovie,
+  setSelectedMovie,
+  movies,
+  pageNo,
+  movieMap,
+  setMovies,
+  setPageNo,
+  setMovieMap,
+}) {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const sentinalRef = useRef(null);
+  const observerRef = useRef(null);
 
   useEffect(() => {
     async function fetchMovies() {
+      if (isLoading) return;
       try {
+        setIsLoading(true);
         const res = await fetch(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_API}`
+          `https://api.themoviedb.org/3/movie/popular?api_key=${
+            import.meta.env.VITE_TMDB_API
+          }&page=${pageNo}`
         );
         const data = await res.json();
-        setMovies(data.results);
-        const map = {};
-        data.results.forEach((m) => (map[m.id] = m));
-        movieMap.current = map;
+        setMovies((prev) => {
+          const combined = [...prev, ...data.results];
+
+          const unique = combined.filter(
+            (m, index, arr) => arr.findIndex((x) => x.id === m.id) === index
+          );
+
+          return unique;
+        });
+        setMovieMap((prev) => {
+          const nextMap = { ...prev };
+          data.results.forEach((m) => (nextMap[m.id] = m));
+          return nextMap;
+        });
+
+        setIsLoading(false);
       } catch (err) {
         console.error("Error fetching movies:", err);
       }
     }
     fetchMovies();
-  }, []);
+  }, [pageNo]);
 
   const toggleWatchList = (id) => {
     setWatchList((prev) => {
@@ -31,27 +61,70 @@ function Movielist({ watchList, setWatchList, movieMap,selectedMovie,setSelected
       return newSet;
     });
   };
+  useEffect(() => {
+    if (!sentinalRef.current) return;
+
+    observerRef.current = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting && !isLoading) {
+        setPageNo((prev) => prev + 1);
+      }
+    });
+    observerRef.current.observe(sentinalRef.current);
+
+    return () => {
+      observerRef.current.disconnect();
+    };
+  }, [isLoading]);
 
   return (
-    <div className="movie-list">
-      {movies.map((movie) => (
-        <Moviecard
-          showBtn={true}
-          key={movie.id}
-          movie={movie}
-          select={() => setSelectedMovie(movie)}
-          add={() => toggleWatchList(movie.id)}
-          watchList={watchList}
-        />
-      ))}
+    <>
+      <div className="movie-list">
+        {movies.map((movie) => (
+          <Moviecard
+            showBtn={true}
+            key={movie.id}
+            movie={movie}
+            select={() => setSelectedMovie(movie)}
+            add={() => toggleWatchList(movie.id)}
+            watchList={watchList}
+          />
+        ))}
 
-      {selectedMovie && (
-        <Largeview
-          movie={selectedMovie}
-          onClose={() => setSelectedMovie(null)}
-        />
+        {selectedMovie && (
+          <Largeview
+            movie={selectedMovie}
+            onClose={() => setSelectedMovie(null)}
+          />
+        )}
+      </div>
+      <div ref={sentinalRef} style={{ height: "20px" }}></div>
+      {isLoading && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+            padding: "15px",
+            fontSize: "18px",
+            opacity: 0.7,
+          }}
+        >
+          <div
+            style={{
+              width: "14px",
+              height: "14px",
+              border: "3px solid #ccc",
+              borderTopColor: "#333",
+              borderRadius: "50%",
+              animation: "spin 0.7s linear infinite",
+            }}
+          ></div>
+          Loading...
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

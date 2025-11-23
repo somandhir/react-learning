@@ -6,7 +6,7 @@ function SearchList({
   query,
   watchList,
   setWatchList,
-  movieMap,
+  setMovieMap,
   selectedMovie,
   setSelectedMovie,
 }) {
@@ -21,14 +21,18 @@ function SearchList({
       .then((res) => res.json())
       .then((res) => {
         setData(res.results);
-        const temp = { ...movieMap.current };
-        res.results?.forEach((m) => (temp[m.id] = m));
-        movieMap.current = temp;
+        setMovieMap((prev) => {
+          const nextMap = { ...prev };
+          res.results.forEach((m) => (nextMap[m.id] = m));
+          return nextMap;
+
+        });
+        
+        
       });
   }, [query]);
   console.log(data);
   console.log(selectedMovie);
-  
 
   const toggleWatchList = (id) => {
     setWatchList((prev) => {

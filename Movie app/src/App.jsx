@@ -5,12 +5,14 @@ import WatchListComp from "./components/WatchListComp";
 import SearchList from "./components/SearchList";
 
 function App() {
-  const movieMap = useRef({});
   const [watchList, setWatchList] = useState(new Set());
   const [showList, setShowList] = useState(false);
   const [query, setQuery] = useState("");
   const [showQueryResult, setshowQueryResult] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [movies, setMovies] = useState([]);
+  const [pageNo, setPageNo] = useState(1);
+  const [movieMap, setMovieMap] = useState({});
 
   console.log(watchList);
 
@@ -21,6 +23,7 @@ function App() {
         query={query}
         setQuery={setQuery}
         setshowQueryResult={setshowQueryResult}
+        showList={showList}
       />
       <main>
         {showList ? (
@@ -35,17 +38,23 @@ function App() {
             query={query}
             watchList={watchList}
             setWatchList={setWatchList}
-            movieMap={movieMap}
+            setMovieMap={setMovieMap}
             selectedMovie={selectedMovie}
             setSelectedMovie={setSelectedMovie}
+
           />
         ) : (
           <Movielist
             watchList={watchList}
             setWatchList={setWatchList}
-            movieMap={movieMap}
             selectedMovie={selectedMovie}
             setSelectedMovie={setSelectedMovie}
+            movies={movies}
+            pageNo={pageNo}
+            movieMap={movieMap}
+            setMovies={setMovies}
+            setPageNo={setPageNo}
+            setMovieMap={setMovieMap}
           />
         )}
       </main>
