@@ -14,8 +14,10 @@ function Movielist({
   setMovies,
   setPageNo,
   setMovieMap,
+  lang,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [filtered, setFiltered] = useState([]);
 
   const sentinalRef = useRef(null);
   const observerRef = useRef(null);
@@ -53,6 +55,22 @@ function Movielist({
     }
     fetchMovies();
   }, [pageNo]);
+  useEffect(() => {
+    if (lang === "all") {
+      setFiltered(movies);
+      return;
+    }
+
+    const filteredList = movies.filter(
+      (movie) => movie.original_language === lang
+    );
+
+    setFiltered(filteredList);
+
+    if (filteredList.length === 0) {
+      setPageNo((prev) => prev + 1);
+    }
+  }, [lang, movies]);
 
   const toggleWatchList = (id) => {
     setWatchList((prev) => {
@@ -80,16 +98,27 @@ function Movielist({
   return (
     <>
       <div className="movie-list">
-        {movies.map((movie) => (
-          <Moviecard
-            showBtn={true}
-            key={movie.id}
-            movie={movie}
-            select={() => setSelectedMovie(movie)}
-            add={() => toggleWatchList(movie.id)}
-            watchList={watchList}
-          />
-        ))}
+        {lang === "all"
+          ? movies.map((movie) => (
+              <Moviecard
+                showBtn={true}
+                key={movie.id}
+                movie={movie}
+                select={() => setSelectedMovie(movie)}
+                add={() => toggleWatchList(movie.id)}
+                watchList={watchList}
+              />
+            ))
+          : filtered.map((movie) => (
+              <Moviecard
+                showBtn={true}
+                key={movie.id}
+                movie={movie}
+                select={() => setSelectedMovie(movie)}
+                add={() => toggleWatchList(movie.id)}
+                watchList={watchList}
+              />
+            ))}
 
         {selectedMovie && (
           <Largeview
@@ -98,6 +127,10 @@ function Movielist({
           />
         )}
       </div>
+      {filtered.length < 5 && pageNo < 500 && lang !== "all" && (
+        <div className="hint">Scroll to load more movies…</div>
+      )}
+
       <div ref={sentinalRef} style={{ height: "20px" }}></div>
       {isLoading && (
         <div

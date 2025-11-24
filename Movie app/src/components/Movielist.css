@@ -20,6 +20,22 @@
 .movie-list::-webkit-scrollbar-thumb:hover {
   background: #666;
 }
+.hint {
+  text-align: center;
+  padding: 10px 15px;
+  margin: 10px auto;
+
+  color: #01d277;             /* TMDB green */
+  background: rgba(1, 210, 119, 0.15);
+
+  border-left: 4px solid #01d277;
+  border-radius: 6px;
+
+  font-size: 14px;
+  width: fit-content;
+  font-weight: 500;
+}
+
 
 /* Responsive tweaks */
 @media (max-width: 768px) {

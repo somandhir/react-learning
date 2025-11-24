@@ -13,8 +13,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [pageNo, setPageNo] = useState(1);
   const [movieMap, setMovieMap] = useState({});
-
-  console.log(watchList);
+  const [lang, setLang] = useState("all");
 
   return (
     <>
@@ -24,6 +23,8 @@ function App() {
         setQuery={setQuery}
         setshowQueryResult={setshowQueryResult}
         showList={showList}
+        lang={lang}
+        setLang={setLang}
       />
       <main>
         {showList ? (
@@ -41,7 +42,6 @@ function App() {
             setMovieMap={setMovieMap}
             selectedMovie={selectedMovie}
             setSelectedMovie={setSelectedMovie}
-
           />
         ) : (
           <Movielist
@@ -55,6 +55,7 @@ function App() {
             setMovies={setMovies}
             setPageNo={setPageNo}
             setMovieMap={setMovieMap}
+            lang={lang}
           />
         )}
       </main>

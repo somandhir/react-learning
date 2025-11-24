@@ -27,6 +27,7 @@
 
 .navbar input[type="text"] {
   flex: 1;
+  width: 400px;
   max-width: 500px;
   margin: 0 2rem;
   padding: 0.7rem 1.2rem;
@@ -73,8 +74,50 @@ input:disabled {
 .watchlist-btn:active {
   background: #243b55;
 }
+.lang-select {
+  padding: 0.7rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 0.95rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
 
-/* Responsive Design */
+.lang-select:hover {
+  border-color: #243b55;
+}
+
+.lang-select:focus {
+  border-color: #243b55;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+
+/* Keep spacing similar to input */
+.navbar .lang-select {
+  margin-right: 1rem;
+}
+
+/* Small Screens: full width */
+@media (max-width: 768px) {
+  .navbar .lang-select {
+    flex: 1 1 45%;
+    font-size: 0.9rem;
+    padding: 0.6rem 0.9rem;
+    order: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .lang-select {
+    flex: 1 1 100%;
+    font-size: 0.85rem;
+    padding: 0.55rem 0.9rem;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar {
     flex-wrap: wrap;
