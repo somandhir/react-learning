@@ -1,0 +1,44 @@
+{
+  "faqs": [
+    {
+      "question": "What is the difference between a sedan and an SUV?",
+      "answer": "A sedan is a low-profile, passenger-focused car with a separate trunk, while an SUV is taller, offers more cargo space, and often includes off-road or all-wheel-drive capabilities."
+    },
+    {
+      "question": "How often should I change my car’s engine oil?",
+      "answer": "Most cars require an oil change every 5,000–10,000 km depending on engine type, oil quality, and driving conditions."
+    },
+    {
+      "question": "What is the purpose of ABS in a car?",
+      "answer": "ABS (Anti-lock Braking System) prevents the wheels from locking during hard braking, improving steering control and reducing skid."
+    },
+    {
+      "question": "What is mileage or fuel efficiency?",
+      "answer": "Fuel efficiency measures how far a car can travel on one litre of fuel, usually expressed as km/l."
+    },
+    {
+      "question": "Do electric cars require engine oil changes?",
+      "answer": "No. Electric cars do not have a combustion engine, so they do not require engine oil changes. They do need battery and brake fluid checks."
+    },
+    {
+      "question": "What is the lifespan of a car battery?",
+      "answer": "A typical car battery lasts 3–5 years, depending on climate, driving habits, and maintenance."
+    },
+    {
+      "question": "How often should I replace my tires?",
+      "answer": "Tires should be replaced every 40,000–60,000 km or when the tread depth drops below recommended safety levels."
+    },
+    {
+      "question": "What is the difference between manual and automatic transmission?",
+      "answer": "In manual transmission, the driver shifts gears manually using a clutch. In automatic transmission, the car shifts gears by itself."
+    },
+    {
+      "question": "Why does my car engine overheat?",
+      "answer": "Engine overheating can be caused by low coolant levels, a faulty radiator, a stuck thermostat, or a malfunctioning water pump."
+    },
+    {
+      "question": "How often should I service my car?",
+      "answer": "Most manufacturers recommend servicing every 10,000–15,000 km or once a year, whichever comes first."
+    }
+  ]
+}
