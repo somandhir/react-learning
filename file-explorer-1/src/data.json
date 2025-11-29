@@ -1,0 +1,65 @@
+{
+  "name": "File Explorer",
+  "type": "folder",
+  "children": [
+    {
+      "name": "src",
+      "type": "folder",
+      "children": [
+        {
+          "name": "components",
+          "type": "folder",
+          "children": [
+            {
+              "name": "FileExplorer.jsx",
+              "type": "file",
+              "children": []
+            },
+            {
+              "name": "Sidebar.jsx",
+              "type": "file",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "utils",
+          "type": "folder",
+          "children": [
+            {
+              "name": "helpers.js",
+              "type": "file",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "App.js",
+          "type": "file",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "public",
+      "type": "folder",
+      "children": [
+        {
+          "name": "index.html",
+          "type": "file",
+          "children": []
+        },
+        {
+          "name": "favicon.ico",
+          "type": "file",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "package.json",
+      "type": "file",
+      "children": []
+    }
+  ]
+}
