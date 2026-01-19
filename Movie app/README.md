@@ -1,130 +1,141 @@
-    # 🎬 FilmFlare — Movie Discovery Web Application
+# FilmFlare 🎬
 
-    FilmFlare is a modern movie discovery web application built using **React.js** that allows users to explore popular movies, watch trailers, search for films, and curate a personalized watchlist. The app integrates real-time data from **TMDB (The Movie Database) API** and streams official movie trailers using **YouTube** for an immersive browsing experience.
+A feature-rich movie discovery web application built with React that lets you explore, search, and curate your perfect watchlist using real-time data from The Movie Database (TMDB).
 
-    ---
+![FilmFlare Demo](./demo.gif)
 
-    ## 🚀 Features
+## ✨ Features
 
-    ### 🔥 Popular Movies Feed
-    - Fetches and displays **real-time popular movies** using the TMDB API
-    - Movies are presented as **interactive cards** with:
-    - Poster / backdrop image
-    - Movie title and release year
-    - Short overview
-    - Rating displayed prominently
-    - Subtle dark gradient overlay for enhanced readability
+### 🎥 Movie Discovery
+- **Popular Movies Feed** - Browse continuously updating popular movies with smooth infinite scrolling
+- **Advanced Search** - Find any movie instantly with the integrated TMDB search engine
+- **Language Filters** - Discover movies across 13 different languages for personalized content
 
-    ---
+### 🎬 Immersive Viewing Experience
+- **Trailer Playback** - Watch official YouTube trailers directly in the app with autoplay and mute controls
+- **Detailed Movie View** - Access comprehensive movie information including ratings, runtime, release year, and original language
+- **Smart Fallback** - High-resolution posters display when trailers aren't available
 
-    ### 🎞️ Movie Details & Trailer Playback
-    - Clicking **“Show Details”** opens a full-screen detailed preview
-    - Automatically plays the **official movie trailer** using the YouTube Player API
-    - Trailer playback features:
-    - Autoplay
-    - Looping
-    - Mute / unmute controls
-    - Fallback poster image is shown if a trailer is unavailable
-    - Displays detailed metadata:
-    - Rating
-    - Release year
-    - Runtime (formatted as hours & minutes)
-    - Original language
+### 📝 Personal Watchlist
+- **One-Click Saves** - Like movies to add them to your personal watchlist
+- **Easy Access** - View and manage your saved movies from the top-right corner
+- **Persistent Storage** - Your watchlist is preserved across sessions
 
-    ---
+### 🎨 Polished UI/UX
+- **Beautiful Movie Cards** - Each card features poster art, ratings, and descriptions with elegant gradient overlays
+- **Responsive Design** - Seamless experience across all device sizes
+- **Infinite Scrolling** - Load more movies automatically as you browse
 
-    ### ❤️ Watchlist (Like Feature)
-    - Users can **like movies** directly from movie cards
-    - Liked movies are stored in a centralized **Watchlist component**
-    - Watchlist is accessible from the **top-right corner** of the application
+## 🚀 Getting Started
 
-    ---
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+- TMDB API Key ([Get one here](https://www.themoviedb.org/settings/api))
 
-    ### 🌍 Language-Based Filtering
-    - Filter popular movies by **13 different languages**
-    - Enhances global accessibility and content personalization
+### Installation
 
-    ---
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/filmflare.git
+cd filmflare
+```
 
-    ### 🔄 Infinite Scrolling
-    - Implements **infinite scrolling** for the popular movies page
-    - Uses:
-    - `useRef`
-    - `IntersectionObserver`
-    - Dynamically loads additional movies as the user scrolls
-    - Optimized for performance without overwhelming the UI
+2. **Install dependencies**
+```bash
+npm install
+# or
+yarn install
+```
 
-    ---
+3. **Set up environment variables**
 
-    ### 🔍 Search Functionality
-    - Search movies using TMDB’s search API
-    - Displays all relevant movies based on user input
-    - Search results support:
-    - Liking movies
-    - Viewing details
-    - Trailer playback
+Create a `.env` file in the root directory:
+```env
+VITE_TMDB_API_KEY=your_tmdb_api_key_here
+```
 
-    ---
+4. **Start the development server**
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-    ## 🛠️ Tech Stack
+5. **Open your browser**
+Navigate to `http://localhost:5173` (or the port shown in your terminal)
 
-    - **Frontend:** React.js
-    - **Styling:** CSS
-    - **APIs:**
-    - TMDB API (movie data)
-    - YouTube Player API (trailers)
-    - **State Management:** React Hooks
-    - `useState`
-    - `useEffect`
-    - `useRef`
-    - **Build Tool:** Vite
+## 🛠️ Built With
 
-    ---
+- **[React](https://react.dev/)** - UI library with Hooks (useState, useEffect, useRef)
+- **[TMDB API](https://www.themoviedb.org/documentation/api)** - Real-time movie data and metadata
+- **[YouTube Player API](https://developers.google.com/youtube/iframe_api_reference)** - Embedded trailer playback
+- **[Vite](https://vitejs.dev/)** - Fast build tool and development server
+- **Modern CSS** - Custom styling with gradients, animations, and responsive design
 
-    ## 📂 Project Structure
+## 📁 Project Structure
 
-    ```text
-    Movie App/
-    ├── src/
-    │   ├── components/
-    │   │   ├── MovieCard.jsx
-    │   │   ├── LargeView.jsx
-    │   │   ├── Watchlist.jsx
-    │   │   └── Search.jsx
-    │   ├── pages/
-    │   │   └── Home.jsx
-    │   ├── App.jsx
-    │   ├── main.jsx
-    │   └── styles/
-    ├── public/
-    ├── .env
-    ├── package.json
-    └── README.md
+```
+filmflare/
+├── src/
+│   ├── components/
+│   │   ├── MovieCard.jsx       # Individual movie card component
+│   │   ├── MovieDetails.jsx    # Detailed view with trailer
+│   │   ├── Watchlist.jsx       # Saved movies component
+│   │   └── SearchBar.jsx       # Search functionality
+│   ├── App.jsx                 # Main application component
+│   ├── main.jsx               # Application entry point
+│   └── index.css              # Global styles
+├── .env                       # Environment variables (not in repo)
+├── package.json
+└── README.md
+```
 
-    ---
+## 🎯 Key Technical Implementations
 
-    ## ▶ Getting Started
+### Infinite Scrolling
+Implements `IntersectionObserver` API with React refs to detect when users reach the bottom of the page, automatically loading the next page of movies for optimal performance.
 
-    ### 1️ Clone the Repository
-    ```bash
-    git clone https://github.com/somandhir/react-learning.git
-    cd react-learning/Movie\ app
-    ### 2 Install Dependencies
-    ```bash
-    npm install
+### YouTube Trailer Integration
+- Dynamically fetches trailer keys from TMDB
+- Filters for YouTube-hosted content only
+- Implements player lifecycle controls (autoplay, mute/unmute, looping)
+- Graceful fallback to poster images
 
-    ### 3 Run the Development Server
-    ```bash
-    npm run dev
+### Efficient State Management
+- Centralized state for movies, watchlist, and filters
+- Clean separation between UI and data-fetching logic
+- Asynchronous API calls with proper error handling
 
-    The application will start at:
+## 🌐 API Integration
 
-    http://localhost:5173
+FilmFlare integrates with two primary APIs:
 
-    Author
+1. **TMDB API** - For movie data, images, and trailer information
+   - Popular movies endpoint
+   - Search endpoint
+   - Movie details endpoint
+   - Videos endpoint
 
-    Soman Dhir
+2. **YouTube Player API** - For embedded trailer playback
 
-    LinkedIn: https://linkedin.com/in/somandhir
 
-    GitHub: https://github.com/somandhir
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👏 Acknowledgments
+
+- [The Movie Database (TMDB)](https://www.themoviedb.org/) for their comprehensive movie API
+- [YouTube](https://www.youtube.com/) for trailer hosting and player API
+- Movie poster images and data are property of their respective owners
+
+## 📧 Contact
+
+Soman Dhir -somandhir@gmail.com
+Project Link: [https://github.com/somandhir/react-learning/tree/main/Movie%20app](https://github.com/somandhir/react-learning/tree/main/Movie%20app)
+
+---
+
+⭐ If you found this project helpful, please consider giving it a star!
