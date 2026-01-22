@@ -1,0 +1,101 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f4f6fb;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main container */
+.container {
+  background: #ffffff;
+  width: 400px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Input + button */
+.adding-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.adding-container input {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.adding-container input:focus {
+  border-color: #4f46e5;
+}
+
+.adding-container button {
+  padding: 10px 16px;
+  font-size: 16px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.adding-container button:hover {
+  background: #4338ca;
+}
+
+.adding-container button:active {
+  transform: scale(0.96);
+}
+
+/* Todo list */
+.list ul {
+  list-style: none;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9fafb;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.list li:hover {
+  background: #eef2ff;
+}
+
+/* Text */
+.list li s {
+  color: #9ca3af;
+}
+
+/* Icons */
+.list li span {
+  margin-left: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.list li span:hover {
+  transform: scale(1.2);
+}
