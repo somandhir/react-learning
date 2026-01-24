@@ -1,32 +1,45 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import ListItem from "./ListItem";
 
 function App() {
+  console.log("todo app rendered");
+
   const [text, setText] = useState("");
-  const [todos, setTodos] = useState([
-    { content: "Learn html", strike: false },
-    { content: "Learn CSS", strike: false },
-  ]);
+  const [todos, setTodos] = useState(
+    JSON.parse(localStorage.getItem("todos")) || [],
+  );
 
   let handleClick = () => {
-    if (text === "") return;
+    if (!text.trim()) return;
     setTodos((prev) => [...prev, { content: text, strike: false }]);
     setText("");
   };
-  let handleDone = (idx) => {
+  let handleDone = useCallback((idx) => {
     setTodos((prev) =>
       prev.map((todo, i) =>
         i === idx ? { ...todo, strike: !todo.strike } : todo,
       ),
     );
-  };
-  let handleDel = (idx) => {
+  }, []);
+  let handleDel = useCallback((idx) => {
     setTodos((prev) => prev.filter((_, i) => i !== idx));
-  };
+  }, []);
   let handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleClick();
     }
   };
+  let handleEdit = useCallback((editedText, got_idx) => {
+    setTodos((prev) => {
+      return prev.map((el, idx) =>
+        idx === got_idx ? { ...el, content: editedText } : el,
+      );
+    });
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
   return (
     <>
       <div className="container">
@@ -43,23 +56,14 @@ function App() {
           <ul>
             {todos.map((el, idx) => {
               return (
-                <li key={idx}>
-                  {el.strike ? <s>{el.content}</s> : el.content}
-                  <div>
-                  <span
-                    style={{ cursor: "pointer" }}
-                    onClick={() => handleDone(idx)}
-                  >
-                    ✔️
-                  </span>{" "}
-                  <span
-                    style={{ cursor: "pointer" }}
-                    onClick={() => handleDel(idx)}
-                  >
-                    ❌
-                  </span>{" "}
-                  </div>
-                </li>
+                <ListItem
+                  key={idx}
+                  el={el}
+                  idx={idx}
+                  handleDel={handleDel}
+                  handleDone={handleDone}
+                  handleEdit={handleEdit}
+                />
               );
             })}
           </ul>
